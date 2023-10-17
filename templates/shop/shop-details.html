@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load mathfilters %}
+
+{% block title %}
+    product_single
+{% endblock title %}
+
+{% block container %}
+
+    <div class="hero-wrap hero-bread" style="background-image: url('/static/images/bg_6.jpg');">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="/">Главная</a></span> <span class="mr-2"><a href="{% url 'shop' %}">Магазин</a></span> </p>
+            <h1 class="mb-0 bread">Продукт Одиночный</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-lg-6 mb-5 ftco-animate">
+    				<a href="{% if product.image %}{{product.image.url}}{% else %}{{product.image_url}}{% endif %}" class="image-popup"><img src="{% if product.image %}{{product.image.url}}{% else %}{{product.image_url}}{% endif %}" class="img-fluid" alt="Colorlib Template"></a>
+    			</div>
+    			<div class="col-lg-6 product-details pl-md-5 ftco-animate">
+    				<h3>{{ product.name}}</h3>
+					<p class="price"><span>Скидка: {{product.price|div:100|mul:product.Discount }} руб.</span></p>
+    				<p class="price"><span>Цена со скидкой: {{product.price }} руб.</span></p>
+    				<p>{{ product.note }}</p>
+    				<!-- <p>Размер:</p> -->
+						<div class="row mt-4">
+							<div class="col-md-6">
+								<div class="form-group d-flex">
+		              <div class="select-wrap">
+	                  <!-- <div class="icon"><span class="ion-ios-arrow-down"></span></div> -->
+	                  <!-- <select name="" id="" class="form-control">
+	                    <option value="">48</option>
+	                    <option value="">50</option>
+	                    <option value="">52</option>
+	                    <option value="">54</option>
+	                    <option value="">56</option>
+	                  </select> -->
+	                </div>
+		            </div>
+				</div>
+	          	<div class="w-100"></div>
+	          	<div class="col-md-12">
+	          		<p style="color: #000;">Время добавление: {{product.time}} </p>
+	          	</div>
+          	</div>
+          	<!-- <p><a href="{% url 'cart_view' %}" class="btn btn-black py-3 px-5">Корзина</a></p> -->
+          	<p><a href="{% url 'shop' %}" class="btn btn-black py-3 px-5">Назад</a></p>
+    			</div>
+    		</div>
+    	</div>
+    </section>
+   
+  <!-- <script>
+		$(document).ready(function(){
+
+		var quantitiy=0;
+		   $('.quantity-right-plus').click(function(e){
+		        
+		        // Stop acting like a button
+		        e.preventDefault();
+		        // Get the field name
+		        var quantity = parseInt($('#quantity').val());
+		        
+		        // If is not undefined
+		            
+		            $('#quantity').val(quantity + 1);
+
+		          
+		            // Increment
+		        
+		    });
+
+		     $('.quantity-left-minus').click(function(e){
+		        // Stop acting like a button
+		        e.preventDefault();
+		        // Get the field name
+		        var quantity = parseInt($('#quantity').val());
+		        
+		        // If is not undefined
+		      
+		            // Increment
+		            if(quantity>0){
+		            $('#quantity').val(quantity - 1);
+		            }
+		    });
+		    
+		});
+	</script> -->
+    
+{% endblock container %}

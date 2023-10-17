@@ -1,0 +1,262 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    index
+{% endblock title %}		
+
+{% block container %}
+    {% for message in messages %}
+        <div class="message">
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+            <!-- <a href="#" class="del-msg">&times;</a> -->
+        </div>
+    {% endfor %}
+   <!-- Кнопка "Заказать звонок" -->
+    <button type="button" class="btn btn-primary fixed-bottom mr-3 mb-3 zakazzanok" data-toggle="modal" data-target="#callModal">Заказать звонок</button>
+
+    <!-- Модальное окно "Заказать звонок" -->
+    <form method="post" >
+      {% csrf_token %}
+      <div class="modal fade" id="callModal" tabindex="-1" role="dialog" aria-labelledby="callModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+              <h5 class="modal-title" id="callModalLabel">Заказать звонок</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body ftco-animate">
+              {{ form.as_p }}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+              <button type="submit" class="btn btn-primary">Отправить</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <!-- END nav -->
+    <section id="home-section" class="hero">
+		  <div class="home-slider js-fullheight owl-carousel">
+	      <div class="slider-item js-fullheight">
+	      	<div class="overlay"></div>
+	        <div class="container-fluid p-0">
+	          <div class="row d-md-flex no-gutters slider-text js-fullheight align-items-center justify-content-end" data-scrollax-parent="true">
+	          	<div class="one-third order-md-last img js-fullheight" style="background-image:url(/static/images/bg_1.jpg);">
+	          	</div>
+		          <div class="one-forth d-flex js-fullheight align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+		          	<div class="text">
+		          		<span class="subheading">Магазин одежды Modern</span>
+		          		<div class="horizontal">
+		          			<h3 class="vr" style="background-image: url(/static/images/divider.jpg);">Из Польши, Турции и Италии.</h3>
+				            <h1 class="mb-4 mt-3">Наш магазин - это место, где вы можете найти модную одежду, которая будет соответствовать вашему  <br><span>стилю &amp; и характеру.</span></h1>
+				            <p> Мы предлагаем широкий выбор одежды для современных женщин от проверенных производителей из Польши, Турции и Италии.</p>
+				            
+				            <p><a href="{% url 'shop'%}" class="btn btn-primary px-5 py-3 mt-3">Откройте для себя это сейчас</a></p>
+				          </div>
+		            </div>
+		          </div>
+	        	</div>
+	        </div>
+	      </div>
+
+	      <div class="slider-item js-fullheight">
+	      	<div class="overlay"></div>
+	        <div class="container-fluid p-0">
+	          <div class="row d-flex no-gutters slider-text js-fullheight align-items-center justify-content-end" data-scrollax-parent="true">
+	          	<div class="one-third order-md-last img js-fullheight" style="background-image:url(/static/images/bg_2.jpg);">
+	          	</div>
+		          <div class="one-forth d-flex js-fullheight align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+		          	<div class="text">
+		          		<span class="subheading">Магазин одежды Modern</span>
+		          		<div class="horizontal">
+		          			<h3 class="vr" style="background-image: url(/static/images/divider.jpg);">Интернет - магазин Modern</h3>
+				            <h1 class="mb-4 mt-3">Наша миссия заключается в том, чтобы предложить нашим клиентам качественную, <span>модную одежду</span> по доступным ценам. </h1>
+				            <p>Мы обеспечиваем персональный подход и высокий уровень сервиса, чтобы каждый наш клиент чувствовал себя особенным и удовлетворенным. </p>
+				            
+				            <p><a href="{% url 'shop' %}" class="btn btn-primary px-5 py-3 mt-3">Делайте покупки прямо сейчас</a></p>
+				          </div>
+		            </div>
+		          </div>
+	        	</div>
+	        </div>
+	      </div>
+	    </div>
+    </section>
+
+    <section class="ftco-section ftco-no-pb ftco-no-pt bg-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url(/static/images/about.jpg);">
+						<a href="https://www.youtube.com/watch?v=PgqSquVqD9c" class="icon popup-vimeo d-flex justify-content-center align-items-center">
+							<span class="icon-play"></span>
+						</a>
+					</div>
+					<div class="col-md-7 py-5 wrap-about pb-md-5 ftco-animate">
+	          <div class="heading-section-bold mb-4 mt-md-5">
+	          	<div class="ml-md-0">
+		            <h2 class="mb-4">Наша команда состоит из профессионалов, которые следят за тенденциями моды и стараются предложить актуальные и стильные вещи.</h2>
+	            </div>
+	          </div>
+	          <div class="pb-md-5">
+							<p>Мы гордимся тем, что можем предложить большой выбор одежды для женщин в различных стилях и на любой вкус.</p>
+							<div class="row ftco-services">
+			          <div class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">
+			            <div class="media block-6 services">
+			              <div class="icon d-flex justify-content-center align-items-center mb-4">
+			            		<span class="flaticon-002-recommended"></span>
+			              </div>
+			              <div class="media-body">
+			                <h3 class="heading">Политика возврата денежных средств</h3>
+			              </div>
+			            </div>      
+			          </div>
+			          <div class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">
+			            <div class="media block-6 services">
+			              <div class="icon d-flex justify-content-center align-items-center mb-4">
+			            		<span class="flaticon-001-box"></span>
+			              </div>
+			              <div class="media-body">
+			                <h3 class="heading">Премиум-класса</h3>
+			              </div>
+			            </div>    
+			          </div>
+			          <div class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">
+			            <div class="media block-6 services">
+			              <div class="icon d-flex justify-content-center align-items-center mb-4">
+			            		<span class="flaticon-003-medal"></span>
+			              </div>
+			              <div class="media-body">
+			                <h3 class="heading">Превосходное качество</h3>
+			              </div>
+			            </div>      
+			          </div>
+			        </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	<br>	
+    <section class="ftco-section ftco-choose ftco-no-pb ftco-no-pt">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-md-8 d-flex align-items-stretch">
+    				<div class="img" style="background-image: url(/static/images/about-1.jpg);"></div>
+    			</div>
+    			<div class="col-md-4 py-md-5 ftco-animate">
+    				<div class="text py-3 py-md-5">
+	            <h2 class="mb-4">Наш интернет-магазин предлагает широкий ассортимент модной одежды для современных женщин.</h2>
+	            <p><a href="{% url 'shop' %}" class="btn btn-white px-4 py-3">Покупки прямо сейчас</a></p>
+    				</div>
+    			</div>
+    		</div>
+
+    		<div class="row">
+    			<div class="col-md-5 order-md-last d-flex align-items-stretch">
+    				<div class="img img-2" style="background-image: url(/static/images/about-2.jpg);"></div>
+    			</div>
+    			<div class="col-md-7 py-3 py-md-5 ftco-animate">
+    				<div class="text text-2 py-md-5">
+	            <h2 class="mb-4">Наша коллекция включает в себя все, от практичных спортивных костюмов до классических нарядов.</h2>
+	            <p><a href="{% url 'shop' %}" class="btn btn-white px-4 py-3">За покупками</a></p>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </section>
+	<br>
+    <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(/static/images/bg_4.jpg);">
+    	<div class="container">
+    		<div class="row justify-content-center py-5">
+    			<div class="col-md-10">
+		    		<div class="row">
+		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		                <strong class="number" data-number="10000">0</strong>
+		                <span>Довольные клиенты</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		                <strong class="number" data-number="100">0</strong>
+		                <span>Отрасли</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		                <strong class="number" data-number="1000">0</strong>
+		                <span>Партнер</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		                <strong class="number" data-number="100">0</strong>
+		                <span>Награды</span>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+	        </div>
+        </div>
+    	</div>
+    </section>
+
+    <section class="ftco-section testimony-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section ftco-animate">
+            <h2 class="mb-4">Наши клиенты о нас</h2>
+          </div>
+        </div>
+        <div class="row ftco-animate">
+          <div class="col-md-12">
+            <div class="carousel-testimony owl-carousel">
+              <div class="item">
+                <div class="testimony-wrap p-4 pb-5">
+                  <div class="user-img mb-5" style="background-image: url(/static/images/person_1.jpg)">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                  </div>
+                  <div class="text">
+                    <p class="mb-5 pl-4 line">Я заказала у Modern несколько вещей и была сильно впечатлена! Одежда выглядит точно так же, как на фото. Качество - на высшем уровне, и каждая вещь сидит очень хорошо. Я особенно люблю свитера и куртки, которые я купила. Посылка пришла быстро и условия доставки были удобными. Я точно буду делать у них еще покупки!</p>
+                    <p class="name">Седова Ева Дамировна</p>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap p-4 pb-5">
+                  <div class="user-img mb-5" style="background-image: url(/static/images/person_2.jpg)">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                  </div>
+                  <div class="text">
+                    <p class="mb-5 pl-4 line">Этот магазин - идеальное место для покупок! Я прошла через многие интернет-магазины, но этот - один из моих любимых. Их коллекция одежды просто потрясающая, и все вещи в очень хорошем качестве. Я купила несколько платьев и блуз, и каждая вещь сидит очень хорошо. Также, доставка была очень быстрой, и я получила свой заказ уже через несколько дней. Я настоятельно рекомендую этот магазин!</p>
+                    <p class="name">Дмитриева Полина Романовна</p>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+		<hr>
+
+
+{% endblock container %}
